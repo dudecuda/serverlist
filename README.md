@@ -1,16 +1,17 @@
 Minetest server list - Ping Removed Fork
-====================
+========================================
 
 At this very moment, this is simply a placeholder until I can upload a few of the changes I made work. 
-Essentially removes a few redundant features, primarily ping, that interfere if using as an internal operation (i.e., running a serverlist server to list worlds on the same machine it's running). 
+Essentially removes a few features, primarily ping, that become redundant and interfere if using as an internal operation (i.e., running a serverlist server to list worlds running on the same machine it's running on). 
 
-The default serverlist sends a ping back after recieving an update from a server, which then feeds lag time. I successfuly removed this response from the serverlist, as there is need for a machine tp ping itself for a network response time. 
+The default serverlist sends a ping back after recieving an update from a Minetest server, which then feeds the lag time column on the webpage, as well as fed to clients using the serverlist. I have successfuly removed this response from the serverlist, as there is no need for a machine to ping itself for a network response time. 
 
 Todo:
-1. Update the changes from what I successfully have working in this setup.
+1. Update the changes from what I successfully have working in this setup (other computer at the moment).
 2. Remove a few parameters that refer to lag time from this ping on the actual list webpage. In the setup I'm trying to produce, all worlds would be on the same machine, and thus would have the sam ping. 
 3. I might integrate a way to ping to some custom server address to just get some idea of response time to list. But in the setup that I'm aiming for, this would be more something to list at the top of the page as applying to all servers, rather than per server basis. 
 
+The rest of the readme is as per the master branch at https://github.com/minetest/serverlist
 
 Setting up the webpage
 ----------------------
