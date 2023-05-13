@@ -45,19 +45,19 @@ def geoip_lookup_continent(ip):
 
 # Views
 
-@app.route("/")
+@app.route("/serverlist")
 def index():
 	return app.send_static_file("index.html")
 
 
-@app.route("/list")
+@app.route("/serverlist/list")
 def list():
 	# We have to make sure that the list isn't cached,
 	# since the list isn't really static.
 	return send_from_directory(app.static_folder, "list.json", max_age=0)
 
 
-@app.route("/geoip")
+@app.route("/serverlist/geoip")
 def geoip():
 	continent = geoip_lookup_continent(request.remote_addr)
 
@@ -68,9 +68,14 @@ def geoip():
 	resp.cache_control.private = True
 
 	return resp
+###Start Cuda Edits for Settings
 
+@app.route("/syssett", methods=["GET", "POST"])
+def announce():
+	return "Request has been filed.", 202
+###ENd Cuda Edits for Settings
 
-@app.route("/announce", methods=["GET", "POST"])
+@app.route("/serverlist/announce", methods=["GET", "POST"])
 def announce():
 	ip = request.remote_addr
 	if ip.startswith("::ffff:"):
