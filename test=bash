@@ -70,15 +70,9 @@ def geoip():
 	return resp
 ###Start Cuda Edits for Settings
 
-@app.route('/syssett/', methods=['POST'])
-def settings():
-    key = request.headers.get('key')
-    if key != 'VALIDATION_KEY':
-        return 'Invalid key', 401
-    settings = request.get_json()
-    with open('settings.conf', 'w') as f:
-        json.dump(settings, f)
-    return 'Settings saved', 200
+@app.route("/syssett", methods=["GET", "POST"])
+def announce():
+	return "Request has been filed.", 202
 ###ENd Cuda Edits for Settings
 
 @app.route("/serverlist/announce", methods=["GET", "POST"])
